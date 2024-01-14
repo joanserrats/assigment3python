@@ -22,8 +22,6 @@ class Film:
 
 
 
-
-
 @click.command()
 @click.option('--title', prompt='Enter film title', help='The title of the film')
 @click.option('--year', prompt='Enter release year', type=int, help='The release year of the film')
@@ -31,7 +29,15 @@ class Film:
 @click.option('--ticket_price', prompt='Enter ticket price', type=float, help='Price of each movie ticket')
 
 
-def main(title, year, tickets_sold, ticket_price):
+def main(title, year, tickets_sold, ticket_price):                
+    try:                                                                   #iniciamos el try para evaluar que todo el script que va a continuacion salga bien y en el caso que no, salte el except
+        film = Film(title, year, tickets_sold)
+        gross_profit = film.calculate_profit(ticket_price)                  #llama a la funcion que hemos definido arriba para calcular el profit
+        if gross_profit is not None:                                                #en el caso de que el profit sea un numero natural lo printeara junto a datos de la pelicula
+            print(f"{film.title} released in {film.year} with {film.tickets_sold} tickets sold.")
+            print(f"Gross profit: ${gross_profit:.2f}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 
 
