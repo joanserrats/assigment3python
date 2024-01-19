@@ -7,7 +7,7 @@ import click
 
 
 class Film:
-    def __iniciar__(self, title, year, tickets_sold):        #definimos una clase llamada "film" para poder crear objetos (titulo, año, ventas)
+    def __init__(self, title, year, tickets_sold):        #definimos una clase llamada "film" para poder crear objetos (titulo, año, ventas)
         self.title = title
         self.year = year
         self.tickets_sold = tickets_sold
